@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
 #include "Collectable.generated.h"
 
@@ -15,12 +16,12 @@ public:
 	// Sets default values for this actor's properties
 	ACollectable();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UPROPERTY(EditDefaultsOnly, Category = Collectable)
+	USphereComponent* BaseCollisionComponent;
+	
+	UPROPERTY(EditDefaultsOnly, Category = Collectable)
+	UStaticMeshComponent* CollectableMesh;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+	UPROPERTY(EditDefaultsOnly, Category = Collectable)
+	bool bIsSuperCollectable;
 };
